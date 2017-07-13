@@ -28,3 +28,7 @@ class HomePageTest(TestCase):
         # self.assertTrue(response.content.strip().endswith(b'</html>'))
         expected = render_to_string('home.html')
         self.assertEqual(response.content.decode(), expected)
+
+    def TestPostRequest(self):
+        request = HttpRequest()
+        request.method = "POST"

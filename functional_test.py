@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import unittest
+import time
 
 
 class NewVisitorTest(unittest.TestCase):
@@ -38,11 +39,13 @@ class NewVisitorTest(unittest.TestCase):
         # "1: Buying peacock feather" item added in the work list.
         InputBox.send_keys(Keys.ENTER)
 
-        table = self.browser.find_element_by_id('id-list-table')
-        rows = table.find_element_by_tag_name('tr')
+        # time.sleep(10)
+
+        table = self.browser.find_element_by_id('id-list-table') # NOT `ELEMENT`, `ELEMENTS`
+        rows = table.find_elements_by_tag_name('tr')
         self.assertTrue(
             any(row.text == '1: Buying peacock feather' for row in rows),
-            "Doesn't show the new To-do in table"
+            'Does not show the new To-do in table'
         )
 
         # There are another text-boxes which to additional items in the page.
